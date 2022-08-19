@@ -3,12 +3,11 @@
     <body>
         <div class="scene scene--card">
           <div class="mycard">
-            <div class="card__face card__face--front">word</div>
-            <div class="card__face card__face--back">definition</div>
+            <div class="card__face card__face--front">{{ words[0].front }}</div>
+            <div class="card__face card__face--back">{{ words[0].back }}</div>
           </div>
         </div>
-        <a href="{{ url_for('practice') }}">Practice</a>
-
+        <!-- todo after checking: delete word from list OR have a counter count +1 for the index -->
         <a href="{{ url_for('add') }}">Add new words</a>
         <p>Your words:</p>
         {% for word in words %}

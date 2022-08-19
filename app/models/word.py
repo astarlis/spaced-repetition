@@ -12,4 +12,4 @@ class Word(db.Model):
     back = db.Column(db.String(120))
     user_id = db.Column(db.Integer, ForeignKey('user.id'))
     due_date = db.Column(db.Date, default=datetime.datetime.utcnow)
-    remembered_counter = db.Column(db.Integer())
+    remembered_counter = db.Column(db.Integer(), default=0)

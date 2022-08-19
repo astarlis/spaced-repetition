@@ -1,3 +1,5 @@
+import datetime
+
 from flask import url_for, render_template, flash
 from werkzeug.utils import redirect
 
@@ -23,3 +25,12 @@ def add():
         db.session.commit()
         flash('The word has been successfully added.')
     return render_template('add.html', form=form)
+
+
+@app.route('/practice')
+def practice():
+    current_date = datetime.datetime.combine(datetime.datetime.today(), datetime.datetime.min.time())
+    words = list(
+        filter(lambda word: current_date >= datetime.datetime.combine(word.due_date, datetime.datetime.min.time()),
+               current_user.words))
+    return render_template('practice.html', words=words)
