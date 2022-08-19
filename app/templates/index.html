@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block app_content %}
+    <body>
+        <div class="scene scene--card">
+          <div class="card" id="card">
+            <div class="card__face card__face--front">front</div>
+            <div class="card__face card__face--back" style="color: black;">back</div>
+          </div>
+        </div>
+
+        <a href="{{ url_for('add') }}">Add new words</a>
+        <p>Your words:</p>
+        {% for word in words %}
+            <div class="card" style="width: 18rem; margin: 10px">
+                  <div class="card-header">
+                    {{ word.front }}
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ word.back }}</li>
+                  </ul>
+                </div>
+        {% endfor %}
+    </body>
+{% endblock %}

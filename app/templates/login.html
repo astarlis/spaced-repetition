@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in get_flashed_messages(with_categories=true) %}
+                <span>{{ message }}</span>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div style="width:30%">
+        {{ wtf.quick_form(form) }}
+    </div>
+    <p>New user? <a href="{{ url_for('registration') }}">Click here to register!</a></p>
+{% endblock %}
